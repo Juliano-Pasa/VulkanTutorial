@@ -24,12 +24,14 @@
     <ClCompile Include="LveWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LveDevice.cpp" />
+    <ClCompile Include="LveSwapChain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
     <ClInclude Include="LvePipeline.h" />
     <ClInclude Include="LveWindow.h" />
     <ClInclude Include="LveDevice.h" />
+    <ClInclude Include="LveSwapChain.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CompileShaders.bat" />
