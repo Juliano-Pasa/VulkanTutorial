@@ -22,7 +22,16 @@ namespace lve
 		return buffer;
 	}
 
-	void LvePipeline::CreateGraphicsPipeline(const std::string& vertFilePath, const std::string& fragFilePath)
+	LvePipeline::LvePipeline(
+		LveDevice& device, 
+		const std::string& vertFilePath, 
+		const std::string fragFilePath, 
+		const PipelineConfigInfo& configInfo) : lveDevice{device}
+	{
+		CreateGraphicsPipeline(vertFilePath, fragFilePath, configInfo);
+	}
+
+	void LvePipeline::CreateGraphicsPipeline(const std::string& vertFilePath, const std::string& fragFilePath, PipelineConfigInfo configInfo)
 	{
 		auto vertCode = ReadFile(vertFilePath);
 		auto fragCode = ReadFile(fragFilePath);
@@ -31,8 +40,20 @@ namespace lve
 		std::cout << "Fragment shader code size: " << fragCode.size() << "\n";
 	}
 
-	LvePipeline::LvePipeline(const std::string& vertFilePath, const std::string fragFilePath)
+	void LvePipeline::CreateShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule)
 	{
-		CreateGraphicsPipeline(vertFilePath, fragFilePath);
+		VkShaderModuleCreateInfo createInfo{};
+		createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+		createInfo.codeSize = code.size();
+		createInfo.pCode = reinterpret_cast<const uint32_t*>(code.data());
+
+		if (vkCreateShaderModule(lveDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS) throw std::runtime_error("Failed to create shader module");
+	}
+
+	PipelineConfigInfo LvePipeline::DefaultPipelineConfigInfo(uint32_t width, uint32_t height)
+	{
+		PipelineConfigInfo configInfo{};
+
+		return configInfo;
 	}
 }
