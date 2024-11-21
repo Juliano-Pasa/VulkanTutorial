@@ -27,6 +27,9 @@
     <ClCompile Include="FirstApp.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="LvePipeline.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LveWindow.h">
@@ -35,10 +38,19 @@
     <ClInclude Include="FirstApp.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="LvePipeline.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleShader.vert">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="SimpleShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CompileShaders.bat">
+      <Filter>Arquivos de Recurso</Filter>
     </None>
   </ItemGroup>
 </Project>

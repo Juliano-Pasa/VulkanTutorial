@@ -20,14 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FirstApp.cpp" />
+    <ClCompile Include="LvePipeline.cpp" />
     <ClCompile Include="LveWindow.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
+    <ClInclude Include="LvePipeline.h" />
     <ClInclude Include="LveWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CompileShaders.bat" />
+    <None Include="SimpleShader.frag" />
     <None Include="SimpleShader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -128,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Vulkan\Include;C:\Users\julia\OneDrive\2016\Documentos\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\julia\OneDrive\2016\Documentos\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -146,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Vulkan\Include;C:\Users\julia\OneDrive\2016\Documentos\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\julia\OneDrive\2016\Documentos\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
