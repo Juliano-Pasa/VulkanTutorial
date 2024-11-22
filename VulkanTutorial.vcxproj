@@ -38,6 +38,18 @@
     <None Include="SimpleShader.frag" />
     <None Include="SimpleShader.vert" />
   </ItemGroup>
+  <ItemGroup>
+	<CustomBuildStep Include="**/*.vert;**/*.frag">
+      <Message>Building Shaders</Message>
+	  <Command>D:\Vulkan\Bin\glslc.exe %(Identity) -o %(Identity).spv</Command>
+	  <Inputs>%(Identity)</Inputs>
+	  <Outputs>%(Identity).spv</Outputs>
+	</CustomBuildStep>
+  </ItemGroup>
+  <PropertyGroup>
+	<CustomBuildAfterTargets>ClCompile</CustomBuildAfterTargets>
+	<CustomBuildBeforeTargets>Link</CustomBuildBeforeTargets>
+  </PropertyGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
