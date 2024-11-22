@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FirstApp.cpp" />
+    <ClCompile Include="LveModel.cpp" />
     <ClCompile Include="LvePipeline.cpp" />
     <ClCompile Include="LveWindow.cpp" />
     <ClCompile Include="main.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
+    <ClInclude Include="LveModel.h" />
     <ClInclude Include="LvePipeline.h" />
     <ClInclude Include="LveWindow.h" />
     <ClInclude Include="LveDevice.h" />
@@ -39,16 +41,16 @@
     <None Include="SimpleShader.vert" />
   </ItemGroup>
   <ItemGroup>
-	<CustomBuildStep Include="**/*.vert;**/*.frag">
+    <CustomBuildStep Include="**/*.vert;**/*.frag">
       <Message>Building Shaders</Message>
-	  <Command>D:\Vulkan\Bin\glslc.exe %(Identity) -o %(Identity).spv</Command>
-	  <Inputs>%(Identity)</Inputs>
-	  <Outputs>%(Identity).spv</Outputs>
-	</CustomBuildStep>
+      <Command>D:\Vulkan\Bin\glslc.exe %(Identity) -o %(Identity).spv</Command>
+      <Inputs>%(Identity)</Inputs>
+      <Outputs>%(Identity).spv</Outputs>
+    </CustomBuildStep>
   </ItemGroup>
   <PropertyGroup>
-	<CustomBuildAfterTargets>ClCompile</CustomBuildAfterTargets>
-	<CustomBuildBeforeTargets>Link</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>ClCompile</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>Link</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

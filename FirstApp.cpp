@@ -7,6 +7,7 @@ namespace lve
 {
 	FirstApp::FirstApp()
 	{
+		LoadModels();
 		CreatePipelineLayout();
 		CreatePipeline();
 		CreateCommandBuffers();
@@ -87,7 +88,8 @@ namespace lve
 			vkCmdBeginRenderPass(commandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			lvePipeline->Bind(commandBuffers[i]);
-			vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
+			lveModel->Bind(commandBuffers[i]);
+			lveModel->Draw(commandBuffers[i]);
 
 			vkCmdEndRenderPass(commandBuffers[i]);
 			if (vkEndCommandBuffer(commandBuffers[i]) != VK_SUCCESS)
@@ -108,4 +110,15 @@ namespace lve
 			throw std::runtime_error("Failed to present swap chain image.");
 	}
 
+	void FirstApp::LoadModels()
+	{
+		std::vector<LveModel::Vertex> vertices
+		{
+			{{0.0f, -0.5f}},
+			{{0.5f, 0.5f}},
+			{{-0.5f, 0.5f}}
+		};
+
+		lveModel = std::make_unique<LveModel>(lveDevice, vertices);
+	}
 }
