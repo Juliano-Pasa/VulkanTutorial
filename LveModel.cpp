@@ -68,4 +68,13 @@ namespace lve
 		attributeDescriptions[0].offset = 0;
 		return attributeDescriptions;
 	}
+
+	LveModel::Vertex LveModel::Vertex::GetMidPoint(LveModel::Vertex a, LveModel::Vertex b)
+	{
+		return LveModel::Vertex
+		{
+			{(a.position.x + b.position.x) * 0.5f,
+			(a.position.y + b.position.y) * 0.5f}
+		};
+	}
 }

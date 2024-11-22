@@ -19,6 +19,7 @@ namespace lve
 			glm::vec2 position;
 			static std::vector<VkVertexInputBindingDescription> GetBindingDescriptions();
 			static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
+			static Vertex GetMidPoint(Vertex a, Vertex b);
 		};
 
 		LveModel(LveDevice& device, const std::vector<Vertex>& vertices);

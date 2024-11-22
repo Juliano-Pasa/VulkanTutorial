@@ -28,6 +28,7 @@ namespace lve
 
 	private:
 		void LoadModels();
+		void LoadSierpinski(int sierpinskiDepth);
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
