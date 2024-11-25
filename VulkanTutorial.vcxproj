@@ -29,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
+    <ClInclude Include="LveGameObject.h" />
     <ClInclude Include="LveModel.h" />
     <ClInclude Include="LvePipeline.h" />
     <ClInclude Include="LveWindow.h" />

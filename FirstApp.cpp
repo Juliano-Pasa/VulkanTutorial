@@ -2,7 +2,8 @@
 
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONEw
-#include  "glm/glm.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtc/constants.hpp"
 
 #include <stdexcept>
 #include <cassert>
@@ -12,13 +13,14 @@ namespace lve
 {
 	struct SimplePushConstantData
 	{
+		glm::mat2 transform{ 1.0f };
 		glm::vec2 offset;
 		alignas(16) glm::vec3 color;
 	};
 
 	FirstApp::FirstApp()
 	{
-		LoadModels();
+		LoadGameObjects();
 		CreatePipelineLayout();
 		RecreateSwapChain();
 		CreateCommandBuffers();
@@ -147,24 +149,7 @@ namespace lve
 		vkCmdSetViewport(commandBuffers[imageIndex], 0, 1, &viewport);
 		vkCmdSetScissor(commandBuffers[imageIndex], 0, 1, &scissor);
 
-		lvePipeline->Bind(commandBuffers[imageIndex]);
-		lveModel->Bind(commandBuffers[imageIndex]);
-		for (int j = 0; j < 4; j++)
-		{
-			SimplePushConstantData push{};
-			push.offset = { 0.0f, -0.4f + j * 0.25f };
-			push.color = { 0.0f, 0.0f, 0.2f + 0.2f * j };
-
-			vkCmdPushConstants(
-				commandBuffers[imageIndex],
-				pipelineLayout,
-				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-				0,
-				sizeof(SimplePushConstantData),
-				&push);
-
-			lveModel->Draw(commandBuffers[imageIndex]);
-		}
+		RenderGameObjects(commandBuffers[imageIndex]);
 
 		vkCmdEndRenderPass(commandBuffers[imageIndex]);
 		if (vkEndCommandBuffer(commandBuffers[imageIndex]) != VK_SUCCESS)
@@ -197,7 +182,7 @@ namespace lve
 			throw std::runtime_error("Failed to present swap chain image.");
 	}
 
-	void FirstApp::LoadModels()
+	void FirstApp::LoadGameObjects()
 	{
 		std::vector<LveModel::Vertex> vertices
 		{
@@ -206,7 +191,16 @@ namespace lve
 			{{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
 		};
 
-		lveModel = std::make_unique<LveModel>(lveDevice, vertices);
+		auto lveModel = std::make_shared<LveModel>(lveDevice, vertices);
+
+		auto triangle = LveGameObject::CreateGameObject();
+		triangle.model = lveModel;
+		triangle.color = { 0.1f, 0.8f, 0.1f };
+		triangle.transform2d.translation.x = 0.2f;
+		triangle.transform2d.scale = { 2.0f, 0.5f };
+		triangle.transform2d.rotation = 0.25f * glm::two_pi<float>();
+
+		gameObjects.push_back(std::move(triangle));
 	}
 
 	void FirstApp::FreeCommandBuffers()
@@ -217,5 +211,28 @@ namespace lve
 			static_cast<uint32_t>(commandBuffers.size()), 
 			commandBuffers.data());
 		commandBuffers.clear();
+	}
+
+	void FirstApp::RenderGameObjects(VkCommandBuffer commandBuffer)
+	{
+		lvePipeline->Bind(commandBuffer);
+
+		for (auto& obj : gameObjects)
+		{
+			SimplePushConstantData push{};
+			push.offset = obj.transform2d.translation;
+			push.color = obj.color;
+			push.transform = obj.transform2d.mat2();
+
+			vkCmdPushConstants(
+				commandBuffer,
+				pipelineLayout,
+				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+				0,
+				sizeof(SimplePushConstantData),
+				&push);
+			obj.model->Bind(commandBuffer);
+			obj.model->Draw(commandBuffer);
+		}
 	}
 }
