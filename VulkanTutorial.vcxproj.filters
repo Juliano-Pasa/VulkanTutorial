@@ -67,8 +67,5 @@
     <None Include="SimpleShader.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="CompileShaders.bat">
-      <Filter>Arquivos de Recurso</Filter>
-    </None>
   </ItemGroup>
 </Project>

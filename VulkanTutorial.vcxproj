@@ -36,7 +36,6 @@
     <ClInclude Include="LveSwapChain.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CompileShaders.bat" />
     <None Include="SimpleShader.frag" />
     <None Include="SimpleShader.vert" />
   </ItemGroup>
