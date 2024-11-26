@@ -1,5 +1,6 @@
 #include "FirstApp.h"
 #include "SimpleRenderSystem.h"
+#include "LveCamera.h"
 
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONEw
@@ -22,16 +23,20 @@ namespace lve
 	void FirstApp::run()
 	{
 		SimpleRenderSystem simpleRenderSystem{ lveDevice, lveRenderer.GetSwapChainRenderPass() };
-
+        LveCamera camera{};
 
 		while (!lveWindow.ShouldClose())
 		{
 			glfwPollEvents();
 
+            float aspect = lveRenderer.GetAspectRatio();
+            //camera.SetOrthographicProjection(-aspect, aspect, -1, 1, -1, 1);
+            camera.SetPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10.f);
+
 			if (auto commandBuffer = lveRenderer.BeginFrame())
 			{
 				lveRenderer.BeginSwapChainRenderPass(commandBuffer);
-				simpleRenderSystem.RenderGameObjects(commandBuffer, gameObjects);
+				simpleRenderSystem.RenderGameObjects(commandBuffer, gameObjects, camera);
 				lveRenderer.EndSwapChainRenderPass(commandBuffer);
 				lveRenderer.EndFrame();
 			}
@@ -104,7 +109,7 @@ namespace lve
 
         auto cube = LveGameObject::CreateGameObject();
         cube.model = lveModel;
-        cube.transform.translation = { 0.f, 0.f, .5f };
+        cube.transform.translation = { 0.f, 0.f, 2.5f };
         cube.transform.scale = { .5f, .5f, .5f };
 
         gameObjects.push_back(std::move(cube));

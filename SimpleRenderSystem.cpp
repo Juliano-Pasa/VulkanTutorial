@@ -57,7 +57,7 @@ namespace lve
 		lvePipeline = std::make_unique<LvePipeline>(lveDevice, "SimpleShader.vert.spv", "SimpleShader.frag.spv", pipelineConfig);
 	}
 
-	void SimpleRenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<LveGameObject>& gameObjects)
+	void SimpleRenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<LveGameObject>& gameObjects, const LveCamera& camera)
 	{
 		lvePipeline->Bind(commandBuffer);
 
@@ -68,7 +68,7 @@ namespace lve
 
 			SimplePushConstantData push{};
 			push.color = obj.color;
-			push.transform = obj.transform.mat4();
+			push.transform = camera.GetProjection() * obj.transform.mat4();
 
 			vkCmdPushConstants(
 				commandBuffer,

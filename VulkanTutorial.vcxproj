@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FirstApp.cpp" />
+    <ClCompile Include="LveCamera.cpp" />
     <ClCompile Include="LveModel.cpp" />
     <ClCompile Include="LvePipeline.cpp" />
     <ClCompile Include="LveRenderer.cpp" />
@@ -31,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
+    <ClInclude Include="LveCamera.h" />
     <ClInclude Include="LveGameObject.h" />
     <ClInclude Include="LveModel.h" />
     <ClInclude Include="LvePipeline.h" />
