@@ -22,19 +22,23 @@
     <ClCompile Include="FirstApp.cpp" />
     <ClCompile Include="LveModel.cpp" />
     <ClCompile Include="LvePipeline.cpp" />
+    <ClCompile Include="LveRenderer.cpp" />
     <ClCompile Include="LveWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LveDevice.cpp" />
     <ClCompile Include="LveSwapChain.cpp" />
+    <ClCompile Include="SimpleRenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
     <ClInclude Include="LveGameObject.h" />
     <ClInclude Include="LveModel.h" />
     <ClInclude Include="LvePipeline.h" />
+    <ClInclude Include="LveRenderer.h" />
     <ClInclude Include="LveWindow.h" />
     <ClInclude Include="LveDevice.h" />
     <ClInclude Include="LveSwapChain.h" />
+    <ClInclude Include="SimpleRenderSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleShader.frag" />
