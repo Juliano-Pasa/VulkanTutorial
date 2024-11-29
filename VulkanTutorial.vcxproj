@@ -39,6 +39,7 @@
     <ClInclude Include="LveModel.h" />
     <ClInclude Include="LvePipeline.h" />
     <ClInclude Include="LveRenderer.h" />
+    <ClInclude Include="LveUtils.h" />
     <ClInclude Include="LveWindow.h" />
     <ClInclude Include="LveDevice.h" />
     <ClInclude Include="LveSwapChain.h" />
@@ -158,7 +159,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Libraries\TinyObjLoader;D:\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -176,7 +177,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Libraries\TinyObjLoader;D:\Libraries\glfw-3.4.bin.WIN64\include;D:\Vulkan\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
