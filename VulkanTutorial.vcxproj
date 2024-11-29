@@ -22,6 +22,7 @@
     <ClCompile Include="FirstApp.cpp" />
     <ClCompile Include="KeyboardMovementController.cpp" />
     <ClCompile Include="LveCamera.cpp" />
+    <ClCompile Include="LveGameObject.cpp" />
     <ClCompile Include="LveModel.cpp" />
     <ClCompile Include="LvePipeline.cpp" />
     <ClCompile Include="LveRenderer.cpp" />

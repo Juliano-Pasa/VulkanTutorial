@@ -51,6 +51,9 @@
     <ClCompile Include="KeyboardMovementController.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="LveGameObject.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LveWindow.h">
