@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="FirstApp.cpp" />
     <ClCompile Include="KeyboardMovementController.cpp" />
+    <ClCompile Include="LveBuffer.cpp" />
     <ClCompile Include="LveCamera.cpp" />
     <ClCompile Include="LveGameObject.cpp" />
     <ClCompile Include="LveModel.cpp" />
@@ -35,7 +36,9 @@
   <ItemGroup>
     <ClInclude Include="FirstApp.h" />
     <ClInclude Include="KeyboardMovementController.h" />
+    <ClInclude Include="LveBuffer.h" />
     <ClInclude Include="LveCamera.h" />
+    <ClInclude Include="LveFrameInfo.h" />
     <ClInclude Include="LveGameObject.h" />
     <ClInclude Include="LveModel.h" />
     <ClInclude Include="LvePipeline.h" />
