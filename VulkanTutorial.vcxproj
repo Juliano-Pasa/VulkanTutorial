@@ -23,6 +23,7 @@
     <ClCompile Include="KeyboardMovementController.cpp" />
     <ClCompile Include="LveBuffer.cpp" />
     <ClCompile Include="LveCamera.cpp" />
+    <ClCompile Include="LveDescriptors.cpp" />
     <ClCompile Include="LveGameObject.cpp" />
     <ClCompile Include="LveModel.cpp" />
     <ClCompile Include="LvePipeline.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="KeyboardMovementController.h" />
     <ClInclude Include="LveBuffer.h" />
     <ClInclude Include="LveCamera.h" />
+    <ClInclude Include="LveDescriptors.h" />
     <ClInclude Include="LveFrameInfo.h" />
     <ClInclude Include="LveGameObject.h" />
     <ClInclude Include="LveModel.h" />
