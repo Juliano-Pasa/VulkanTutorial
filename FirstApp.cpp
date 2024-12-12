@@ -53,7 +53,7 @@ namespace lve
         }
 
         auto globalSetLayout = LveDescriptorSetLayout::Builder(lveDevice)
-            .addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+            .addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
             .build();
 
         std::vector<VkDescriptorSet> globalDescriptorSets(LveSwapChain::MAX_FRAMES_IN_FLIGHT);
@@ -98,7 +98,8 @@ namespace lve
                     frameTime,
                     commandBuffer,
                     camera,
-                    globalDescriptorSets[frameIndex]
+                    globalDescriptorSets[frameIndex],
+                    gameObjects
                 };
 
                 GlobalUbo ubo{};
@@ -107,7 +108,7 @@ namespace lve
                 uboBuffers[frameIndex]->flush();
 
 				lveRenderer.BeginSwapChainRenderPass(commandBuffer);
-				simpleRenderSystem.RenderGameObjects(frameInfo, gameObjects);
+				simpleRenderSystem.RenderGameObjects(frameInfo);
 				lveRenderer.EndSwapChainRenderPass(commandBuffer);
 				lveRenderer.EndFrame();
 			}
@@ -125,7 +126,7 @@ namespace lve
         flatVase.transform.translation = { -0.5f, 0.5f, 0.f };
         flatVase.transform.scale = {3.f, 1.5f, 3.f};
 
-        gameObjects.push_back(std::move(flatVase));
+        gameObjects.emplace(flatVase.GetId(), std::move(flatVase));
 
         lveModel = LveModel::CreateModelFromFile(lveDevice, "models/smooth_vase.obj");
 
@@ -134,7 +135,7 @@ namespace lve
         smoothVase.transform.translation = { 0.5f, 0.5f, 0.f };
         smoothVase.transform.scale = { 3.f, 1.5f, 3.f };
 
-        gameObjects.push_back(std::move(smoothVase));
+        gameObjects.emplace(smoothVase.GetId(), std::move(smoothVase));
 
         lveModel = LveModel::CreateModelFromFile(lveDevice, "models/quad.obj");
 
@@ -143,6 +144,6 @@ namespace lve
         floor.transform.translation = { 0.f, 0.5f, 0.f };
         floor.transform.scale = { 3.f, 1.f, 3.f };
 
-        gameObjects.push_back(std::move(floor));
+        gameObjects.emplace(floor.GetId(), std::move(floor));
     }
 }
