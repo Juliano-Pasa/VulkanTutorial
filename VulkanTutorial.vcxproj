@@ -32,6 +32,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LveDevice.cpp" />
     <ClCompile Include="LveSwapChain.cpp" />
+    <ClCompile Include="PointLightSystem.cpp" />
     <ClCompile Include="SimpleRenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -49,9 +50,12 @@
     <ClInclude Include="LveWindow.h" />
     <ClInclude Include="LveDevice.h" />
     <ClInclude Include="LveSwapChain.h" />
+    <ClInclude Include="PointLightSystem.h" />
     <ClInclude Include="SimpleRenderSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PointLight.frag" />
+    <None Include="PointLight.vert" />
     <None Include="SimpleShader.frag" />
     <None Include="SimpleShader.vert" />
   </ItemGroup>

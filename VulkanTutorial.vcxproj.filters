@@ -60,6 +60,9 @@
     <ClCompile Include="LveDescriptors.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="PointLightSystem.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LveWindow.h">
@@ -107,12 +110,21 @@
     <ClInclude Include="LveDescriptors.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="PointLightSystem.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleShader.vert">
       <Filter>Shaders</Filter>
     </None>
     <None Include="SimpleShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="PointLight.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="PointLight.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
